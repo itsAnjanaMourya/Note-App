@@ -10,30 +10,31 @@ const Login = () => {
     const { login } = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState({ email: "", password: ""})
+    const [error, setError] = useState({ email: "", password: "" })
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        let errors = { email: "", password: ""};
-
-        if (!email) {
-            errors.email = "Email is required.";
-        }
-        if (!password) {
-            errors.password = "Password is required.";
-        }
-        if (errors.email || errors.password) {
-            setError(errors);
-            return;
-        }
-
-        setError({ email: "", password: ""});
-
 
         try {
+
+            let errors = { email: "", password: "" };
+
+            if (!email) {
+                errors.email = "Email is required.";
+            }
+            if (!password) {
+                errors.password = "Password is required.";
+            }
+            if (errors.email || errors.password) {
+                setError(errors);
+                return;
+            }
+            setError({ email: "", password: "" });
+
             await login({ email, password })
             navigate("/home");
+            
         } catch (err) {
             console.log(err)
             navigate("/")

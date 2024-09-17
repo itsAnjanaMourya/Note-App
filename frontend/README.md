@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Prerequisites
+    Node.js installed on your local machine.
+    MongoDB Atlas or local MongoDB setup.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Installation
 
-## Available Scripts
+## Clone the repository
+    git clone https://github.com/itsAnjanaMourya/Note-App.git
 
-In the project directory, you can run:
+## Navigate to the project directory
+    cd NotesApplication
 
-### `npm start`
+## Navigate to the backend directory
+    cd backend
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Install backend dependencies
+    npm i
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Create an .env file 
+    In the backend folder, create a .env file with the following variables:
 
-### `npm test`
+    MONGODB_URL= <your-mongodb-atlas-uri>
+    PORT=3200
+    BASE_URL= <your-frontend-url>
+    SECRET_KEY= <secret-key-for-signing-JWT>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Start the backend server
+    npm start
 
-### `npm run build`
+# Frontend Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Navigate to the frontend directory
+    cd frontend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Install frontend dependencies:
+    npm i
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Start the frontend development server
+    npm start
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Usage**
+    Register: Create an account by providing a username, email, and password.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    Login: Log in using the registered credentials.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    Manage Notes:
+    Add: Create new notes by filling in the title, description, and status.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    Edit: Update existing notes by selecting the edit button.
+    
+    Delete: Remove notes you no longer need.
 
-## Learn More
+**API Endpoints**
+### Authentication
+    POST /user/register: Register a new user.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    POST /user/login: Log in to get a JWT.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    POST /user/logout: Invalidate the user session.
 
-### Code Splitting
+### Notes
+    GET /notes/getNotes: Get all notes for the authenticated user.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    POST /notes/addNote: Add a new note.
 
-### Analyzing the Bundle Size
+    PUT /notes/updateNote/:id: Update a note by its ID.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    DELETE /notes/deleteNote/:id: Delete a note by its ID.
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
