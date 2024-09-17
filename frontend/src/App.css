@@ -58,6 +58,7 @@ body{
   background-color: #ccddff;
   text-align: left;
   width: 80%;
+  
 }
 .visible{
   display: block;
@@ -103,10 +104,12 @@ body{
 
 .Todo{
   display: flex;
+  width:1000px;
+  
 }
 
 .TodoTask{
-  width:800px;
+  width:1000px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -115,6 +118,7 @@ body{
   padding:  0.55rem;
   margin-bottom: 1.5rem;
   border-radius: 0.25rem;
+  box-shadow: rgba(90, 71, 94, 0.16) 0px 10px 36px 0px, rgba(90, 61, 81, 0.06) 0px 0px 0px 1px;
 }
 .TodoStatus{
   width:800px;
@@ -132,13 +136,15 @@ body{
   margin:unset;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  width:300px;
 }
 .show-status{
   margin:unset;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  width:150px;
 }
 
 .fa-trash{
@@ -160,8 +166,12 @@ body{
   align-items: center;
   margin:auto;
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.8rem;
   text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+.inner{
+  width:80%
 }
 .login-input{
   width:100%;
@@ -174,14 +184,29 @@ body{
   justify-content: center;
 
 }
+
+.error{
+  color:red;
+  height:20px;
+}
+
 .login-label{
   color: white;
-  margin-top:10%;
+  margin-top:5%
 }
 .login-btn{
   width: auto;
-  margin-top: 15%;
+  margin-top: 10%;
   padding: 5px 10px;
   border-radius: 4px;
   background-color: #f3f3f3 !important;
+}
+.form-footer{
+  color:white
+}
+.custom-link {
+  color: #05b0f4; 
+}
+.custom-link:hover {
+  color:  #75cefd; 
 }

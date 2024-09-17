@@ -24,6 +24,7 @@ export const AuthContextProvider = ({ children }) => {
                     }
                 )
                 .then((res) => {
+                    const token = res.data.token;
                     document.cookie = `access_token=${token};`
                     console.log("cookiiiie", document.cookie);
                     console.log("response", input);
@@ -57,7 +58,8 @@ export const AuthContextProvider = ({ children }) => {
             setIsAuthenticated(false);
             setCurrentUser(null);
             console.log("cookie after logout", document.cookie)
-            //localStorage.clear();
+            alert("Logging out...");
+            window.location.href = "/";
         } catch (err) {
             console.error("Logout error:", err);
         }

@@ -10,12 +10,30 @@ const Login = () => {
     const { login } = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState({ email: "", password: ""})
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        let errors = { email: "", password: ""};
+
+        if (!email) {
+            errors.email = "Email is required.";
+        }
+        if (!password) {
+            errors.password = "Password is required.";
+        }
+        if (errors.email || errors.password) {
+            setError(errors);
+            return;
+        }
+
+        setError({ email: "", password: ""});
+
+
         try {
             await login({ email, password })
-                navigate("/home");
+            navigate("/home");
         } catch (err) {
             console.log(err)
             navigate("/")
@@ -28,37 +46,35 @@ const Login = () => {
         <>
             <div className="outer">
                 <div className="LoginWrapper" id="login" >
-                    <div>
+                    <div className='inner'>
                         <h2 style={{ color: "white" }}>Login</h2>
                         <form onSubmit={handleSubmit} className="">
                             <label className="login-label">
-                                Enter your email:
-                                <input
-                                    type="email"
-                                    name="email"
-                                    className="login-input"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                            </label>
+                                Enter your email: </label>
+                            <input
+                                type="email"
+                                name="email"
+                                className="login-input"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <div className="error">{error.email && <p >{error.email}</p>}</div>
                             <br />
-                            <label className="login-label">
-                                Enter your password:
-                                <input
-                                    type="password"
-                                    name="password"
-                                    className="login-input"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                />
-                            </label>
+                            <label className="login-label">Enter your password:</label>
+                            <input
+                                type="password"
+                                name="password"
+                                className="login-input"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <div className="error">{error.password && <p>{error.password}</p>}</div>
                             <br />
                             <button type="submit" className="login-btn">
                                 Login
                             </button>
-                            {/* <Link to="/forgotPassword">Forgot password?</Link> */}
-                            <p>
-                                Don't have an Account?<Link to="/register">Register here</Link>
+                            <p className='form-footer'>
+                                Don't have an Account?<Link className='custom-link' to="/register">Register here</Link>
                             </p>
                         </form>
                     </div>

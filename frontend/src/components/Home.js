@@ -6,10 +6,11 @@ import { AuthContext } from '../context/AuthContext';
 import { useEffect } from 'react';
 
 const Home = () => {
-  const { currentUser, isAuthenticated, login} = useContext(AuthContext);
-  const [note, setNote] = useState({ title: "", description: "", status: "" });
+  const { currentUser, isAuthenticated, login } = useContext(AuthContext);
+  const [note, setNote] = useState({ title: "", description: "", status: "In Progress" });
   const [list, setList] = useState([])
   const [editIndex, setEditIndex] = useState(null);
+  const [error, setError] = useState({ title: "", description: "", status: "" })
 
   // console.log("current user name", currentUser.username)
   const handleGetNote = async (e) => {
@@ -40,7 +41,7 @@ const Home = () => {
     if (isAuthenticated) {
       handleGetNote();
     }
-    else{
+    else {
       login()
       handleGetNote();
     }
@@ -50,6 +51,26 @@ const Home = () => {
 
   const handleAddNote = async (e) => {
     e.preventDefault();
+
+
+    let errors = { title: "", description: "", status: "" };
+
+    if (!note.title) {
+      errors.title = "Title is required.";
+    }
+    if (!note.description) {
+      errors.description = "Description is required.";
+    }
+    if (!note.status) {
+      errors.status = "Status is required.";
+    }
+
+    if (errors.title || errors.description || errors.status) {
+      setError(errors);
+      return;
+    }
+
+    setError({ title: "", description: "", status: "" });
 
     let token;
     document.cookie.split(";").map(s => { token = s.startsWith("access") ? s.substring("access_token=".length) : "" });
@@ -127,6 +148,8 @@ const Home = () => {
             style={{ marginTop: "8%", marginBottom: "4%", color: "black" }}
           >Welcome, {isAuthenticated && currentUser ? `${currentUser.username} !` : "user ! please login"}
           </h2>
+          <div>
+            {error && <p style={{ color: 'red', height:"20px" }}>{error.title || error.description || error.status}</p>}</div>
           {isAuthenticated &&
             <>
               <form onSubmit={handleAddNote} className="TodoForm">
@@ -155,7 +178,7 @@ const Home = () => {
                   id="taskstatus"
                   name="taskstatus"
                   className="todo-btn"
-                  defaultValue={"default"}
+                  value={note.status}
                   onChange={(e) => setNote({ ...note, status: e.target.value })}
                 >
                   <option value="default" disabled>
@@ -179,9 +202,9 @@ const Home = () => {
               return (
                 <div key={i} className="Todo">
                   <div className="TodoTask">
-                    <p className="show-task">Title: {data.title} </p>
-                    <p className="show-task">Description:{data.description}</p>
-                    <p className="show-status">Status: {data.status}</p>
+                    <p className="show-task">Title:{' '}{data.title} </p>
+                    <p className="show-task">Description:{' '}{data.description}</p>
+                    <p className="show-status">Status:{' '}{data.status}</p>
                     <div>
                       <FontAwesomeIcon
                         icon={faPenToSquare}

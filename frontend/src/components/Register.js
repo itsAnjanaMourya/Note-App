@@ -29,10 +29,10 @@ const Register = () => {
     <>
     <div className="outer">
         <div className="LoginWrapper">
-            <div>
+            <div className='inner'>
                 <h2 style={{color:"white"}}>Register</h2>
                 <form onSubmit={handleSubmit} className="text-center">
-                    <label>Enter your name:
+                    <label className="login-label">Enter your name:</label>
                         <input
                             type="text"
                             name="name"
@@ -40,9 +40,9 @@ const Register = () => {
                             value={name || ""}
                             onChange={(e)=>setName(e.target.value)}
                         />
-                    </label>
+                    
 
-                    <label>Enter your email:
+                    <label className="login-label">Enter your email: </label>
                         <input
                             type="email"
                             name="email"
@@ -51,9 +51,9 @@ const Register = () => {
                             onChange={(e)=>setEmail(e.target.value)}
 
                         />
-                    </label>
+                   
                     <br />
-                    <label>Enter your password:
+                    <label className="login-label">Enter your password:</label>
                         <input
                             type="password"
                             name="password"
@@ -61,10 +61,10 @@ const Register = () => {
                             value={password || ""}
                             onChange={(e)=>setPassword(e.target.value)}
                         />
-                    </label>
+                    
                     <br />
-                    <button type="submit" className="">Register</button>
-                    <p>Have an Account?<Link to="/">Login here</Link></p>
+                    <button type="submit" className="login-btn">Register</button>
+                    <p className='form-footer'>Have an Account?<Link  className='custom-link' to="/">Login here</Link></p>
                 </form>
             </div>
         </div>
