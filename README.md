@@ -1,22 +1,22 @@
-# Prerequisites
+### Prerequisites
     Node.js installed on your local machine.
     MongoDB Atlas or local MongoDB setup.
 
-# Installation
+**Installation**
 
-## Clone the repository
+### Clone the repository
     git clone https://github.com/itsAnjanaMourya/Note-App.git
 
-## Navigate to the project directory
+### Navigate to the project directory
     cd NotesApplication
 
-## Navigate to the backend directory
+### Navigate to the backend directory
     cd backend
 
-## Install backend dependencies
+### Install backend dependencies
     npm i
 
-## Create an .env file 
+### Create an .env file 
     In the backend folder, create a .env file with the following variables:
 
     MONGODB_URL= <your-mongodb-atlas-uri>
@@ -24,18 +24,18 @@
     BASE_URL= <your-frontend-url>
     SECRET_KEY= <secret-key-for-signing-JWT>
 
-## Start the backend server
+### Start the backend server
     npm start
 
-# Frontend Setup
+**Frontend Setup**
 
-## Navigate to the frontend directory
+### Navigate to the frontend directory
     cd frontend
 
-## Install frontend dependencies:
+### Install frontend dependencies:
     npm i
 
-## Start the frontend development server
+### Start the frontend development server
     npm start
 
 
