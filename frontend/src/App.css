@@ -210,3 +210,14 @@ body{
 .custom-link:hover {
   color:  #75cefd; 
 }
+.high {
+  border-left: 10px solid red;
+}
+
+.medium {
+  border-left: 10px solid orange;
+}
+
+.low {
+  border-left: 10px solid green;
+}

@@ -1,11 +1,11 @@
 import NoteModel from '../models/note.schema.js';
 
 export const addNote=async(req, res)=>{
-    const {title, description, status}=req.body;
+    const {title, description, status, priority}=req.body;
     //store in db
     console.log("not",req.body)
     try{
-        const note = new NoteModel({user: req.user.id, title, description, status})
+        const note = new NoteModel({user: req.user.id, title, description, status, priority})
     await note.save()
     res.status(200).send({'message':"Note is saved in db", note:note})
     }catch(error){
@@ -25,7 +25,7 @@ export const getNotes=async(req, res)=>{
 export const updateNote=async(req, res)=>{
     const { id } = req.params;
     console.log("id from params", id)
-    const { title, description, status } = req.body;
+    const { title, description, status, priority } = req.body;
     try {
         const note = await NoteModel.findById(id);
         console.log(note)
@@ -39,7 +39,8 @@ export const updateNote=async(req, res)=>{
         note.title = title || note.title;
         note.description = description || note.description;
         note.status = status || note.status;
-
+        note.priority = status || note.priority;
+        
         const updatedNote = await note.save();
         console.log("updated note", updatedNote)
         res.status(200).json(updatedNote);

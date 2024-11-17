@@ -77,6 +77,9 @@ const Login = () => {
                             <p className='form-footer'>
                                 Don't have an Account?<Link className='custom-link' to="/register">Register here</Link>
                             </p>
+                            <p>or login using guest credentials<br/>
+                           (email: guest@gmail.com<br/>
+                            password: 123)</p>
                         </form>
                     </div>
                 </div>

@@ -9,8 +9,11 @@ app.use(express.json())
 
 const baseUrl = process.env.BASE_URL;
 app.use(cors({ credentials: true, origin:baseUrl}))
+
 app.use("/user",userRouter)
 app.use("/notes",notesRouter)
+
+
 connectDB().then(()=>{
     app.listen(process.env.PORT||8000,()=>{
         console.log(`server is running on ${process.env.PORT}`)

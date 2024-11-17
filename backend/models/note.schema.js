@@ -14,6 +14,11 @@ const noteSchema = mongoose.Schema({
     enum: ['To Do', 'In Progress', 'Completed'],
     default: 'To Do',
   },
+  priority: {
+    type: String,
+    enum: ['High', 'Medium', 'Low'],
+    default: 'Medium',
+  }
 },{
   versionKey:false
 });
